@@ -46,6 +46,12 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "peerDependencies": {
+    "unocss": "^0.57.7"
+  },
+  "dependencies": {
+    "@unocss/preset-mini": "^0.57.7"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.1.2",
     "@antfu/ni": "^0.21.12",
