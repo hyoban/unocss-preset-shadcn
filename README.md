@@ -8,6 +8,30 @@
 
 use shadcn ui with unocss
 
+1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
+1. Theme can be easily customized
+
+## Usage
+
+```bash
+ni -D unocss-preset-shadcn
+```
+
+```ts
+// unocss.config.ts
+import { defineConfig, presetUno } from 'unocss'
+import { presetShadcn } from 'unocss-preset-shadcn'
+
+export default defineConfig({
+  presets: [
+    presetUno(),
+    presetShadcn({
+      color: 'red',
+    }),
+  ],
+})
+```
+
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/unocss-preset-shadcn?style=flat&colorA=080f12&colorB=1fa669
