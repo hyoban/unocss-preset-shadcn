@@ -38,12 +38,14 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "lint": "eslint .",
+    "lint": "eslint --max-warnings 0 .",
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
@@ -56,12 +58,18 @@
     "@antfu/eslint-config": "^2.1.2",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.6",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@types/node": "^20.10.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-unicorn": "^49.0.0",
     "esno": "^4.0.0",
     "lint-staged": "^15.1.0",
     "pnpm": "^8.11.0",
+    "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
     "typescript": "^5.3.2",
@@ -70,9 +78,6 @@
     "vitest": "^1.0.0-beta.6"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
+    "pre-commit": "pnpm run format:check && pnpm run lint && pnpm run typecheck"
   }
 }

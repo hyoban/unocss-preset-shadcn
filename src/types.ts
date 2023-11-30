@@ -1,6 +1,6 @@
-import type { Theme as ShadcnTheme } from './themes'
+import type { Theme as ShadcnTheme } from "./themes"
 
-export type ShadcnThemeColor = ShadcnTheme['name']
+export type ShadcnThemeColor = ShadcnTheme["name"]
 export type ShadcnThemeRadius = 0 | 0.3 | 0.5 | 0.75 | 1
 export interface PresetShadcnOptions {
   /**
