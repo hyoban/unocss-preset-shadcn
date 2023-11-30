@@ -6,12 +6,16 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-use shadcn ui with unocss
+Use [shadcn/ui](https://ui.shadcn.com/) with [UnoCSS](https://unocss.dev/)
 
 1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
 1. Theme can be easily customized
 
 ## Usage
+
+Follow the [Install and configure Vite guide](https://ui.shadcn.com/docs/installation/vite) to setup shadcn/ui.
+
+Replace the second step with the following operation after setup [UnoCSS](https://unocss.dev/integrations/vite):
 
 ```bash
 ni -D unocss-preset-shadcn
@@ -30,6 +34,43 @@ export default defineConfig({
     }),
   ],
 })
+```
+
+Do not run `shadcn-ui init` command.
+
+1. `pnpm add lucide-react class-variance-authority clsx tailwind-merge`
+1. copy `utils.ts` into your project at `src/lib`
+1. create `components.json` in your project root and modify as needed
+1. `pnpm dlx shadcn-ui@latest add button`
+
+```ts
+import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+import type { ClassValue } from "clsx"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
 ```
 
 <!-- Badges -->
