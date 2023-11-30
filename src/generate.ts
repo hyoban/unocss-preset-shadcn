@@ -1,17 +1,21 @@
-import { themes } from "./themes"
+import { themeCSSVarKeys, themes } from "./themes"
 
-import type { Theme as ShadcnTheme } from "./themes"
-import type { ShadcnThemeColor, ShadcnThemeRadius } from "./types"
+import type {
+  ThemeCSSVarKey,
+  ThemeCSSVars,
+  ThemeCSSVarsVariant,
+} from "./themes"
+import type { ShadcnThemeColor } from "./types"
 
 function generateLightVars(
   theme: "light" | "dark",
-  color: ShadcnTheme["cssVars"]["light"] | ShadcnTheme["cssVars"]["dark"],
-  radius: ShadcnThemeRadius,
+  color: ThemeCSSVars,
+  radius: number,
 ) {
   return [
     ...Object.entries(color)
       .map(([key, value]) => {
-        if (key === "radius") return ""
+        if (!themeCSSVarKeys.includes(key as ThemeCSSVarKey)) return ""
         return `  --${key}: ${value};`
       })
       .filter(Boolean),
@@ -20,13 +24,22 @@ function generateLightVars(
 }
 
 export function generateCSSVars(
-  color: ShadcnThemeColor,
-  radius: ShadcnThemeRadius,
+  color: ShadcnThemeColor | ThemeCSSVarsVariant,
+  radius: number,
 ) {
-  const theme = themes.find((t) => t.name === color)
-  if (!theme) throw new Error(`Unknown color: ${color}`)
-  const { cssVars } = theme
-  const { light, dark } = cssVars
+  let light: ThemeCSSVars
+  let dark: ThemeCSSVars
+
+  if (typeof color === "string") {
+    const theme = themes.find((t) => t.name === color)
+    if (!theme) throw new Error(`Unknown color: ${color}`)
+    const { cssVars } = theme
+    light = cssVars.light
+    dark = cssVars.dark
+  } else {
+    light = color.light
+    dark = color.dark
+  }
   const lightVars = generateLightVars("light", light, radius)
   const darkVars = generateLightVars("dark", dark, radius)
 

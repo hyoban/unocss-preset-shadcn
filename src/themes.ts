@@ -1,3 +1,36 @@
+type ThemeColorString = `${number} ${number}% ${number}%`
+export const themeCSSVarKeys = [
+  "background",
+  "foreground",
+  "card",
+  "card-foreground",
+  "popover",
+  "popover-foreground",
+  "primary",
+  "primary-foreground",
+  "secondary",
+  "secondary-foreground",
+  "muted",
+  "muted-foreground",
+  "accent",
+  "accent-foreground",
+  "destructive",
+  "destructive-foreground",
+  "border",
+  "input",
+  "ring",
+] as const
+export type ThemeCSSVarKey = (typeof themeCSSVarKeys)[number]
+
+export type ThemeCSSVars = {
+  [K in ThemeCSSVarKey]: ThemeColorString
+}
+
+export type ThemeCSSVarsVariant = {
+  light: ThemeCSSVars
+  dark: ThemeCSSVars
+}
+
 export const themes = [
   {
     name: "zinc",
@@ -101,7 +134,7 @@ export const themes = [
         "destructive-foreground": "210 40% 98%",
         border: "217.2 32.6% 17.5%",
         input: "217.2 32.6% 17.5%",
-        ring: "212.7 26.8% 83.9",
+        ring: "212.7 26.8% 83.9%",
       },
     },
   },
