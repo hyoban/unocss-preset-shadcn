@@ -1,11 +1,9 @@
+import { mergeDeep } from "unocss"
+
 import { themeCSSVarKeys, themes } from "./themes"
 
-import type {
-  ThemeCSSVarKey,
-  ThemeCSSVars,
-  ThemeCSSVarsVariant,
-} from "./themes"
-import type { ShadcnThemeColor } from "./types"
+import type { ThemeCSSVarKey, ThemeCSSVars } from "./themes"
+import type { ColorOptions } from "./types"
 
 function generateLightVars(
   theme: "light" | "dark",
@@ -23,23 +21,28 @@ function generateLightVars(
   ].join("\n")
 }
 
-export function generateCSSVars(
-  color: ShadcnThemeColor | ThemeCSSVarsVariant,
-  radius: number,
-) {
+function getBuiltInTheme(name: string) {
+  const theme = themes.find((t) => t.name === name)
+  if (!theme) throw new Error(`Unknown color: ${name}`)
+  return theme.cssVars
+}
+
+function getColorTheme(color: ColorOptions) {
   let light: ThemeCSSVars
   let dark: ThemeCSSVars
 
   if (typeof color === "string") {
-    const theme = themes.find((t) => t.name === color)
-    if (!theme) throw new Error(`Unknown color: ${color}`)
-    const { cssVars } = theme
-    light = cssVars.light
-    dark = cssVars.dark
+    ;({ light, dark } = getBuiltInTheme(color))
+  } else if ("base" in color) {
+    ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color.color))
   } else {
-    light = color.light
-    dark = color.dark
+    ;({ light, dark } = color)
   }
+  return { light, dark }
+}
+
+export function generateCSSVars(color: ColorOptions, radius: number) {
+  let { light, dark } = getColorTheme(color)
   const lightVars = generateLightVars("light", light, radius)
   const darkVars = generateLightVars("dark", dark, radius)
 

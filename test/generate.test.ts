@@ -61,4 +61,20 @@ describe("generate-theme-css-var", () => {
       ),
     ).toMatchFileSnapshot("custom.css")
   })
+
+  it("custom theme based on built in theme", () => {
+    expect(
+      generateCSSVars(
+        {
+          base: "zinc",
+          color: {
+            light: {
+              background: "0 1% 100%",
+            },
+          },
+        },
+        1,
+      ),
+    ).toMatchFileSnapshot("custom.css")
+  })
 })

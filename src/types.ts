@@ -1,12 +1,21 @@
 import type { Theme as ShadcnTheme, ThemeCSSVarsVariant } from "./themes"
+import type { DeepPartial } from "unocss"
 
 export type ShadcnThemeColor = ShadcnTheme["name"]
 
-export interface PresetShadcnOptions {
+export type ColorOptions =
+  | ShadcnThemeColor
+  | ThemeCSSVarsVariant
+  | {
+      base: ShadcnThemeColor
+      color: DeepPartial<ThemeCSSVarsVariant>
+    }
+
+export type PresetShadcnOptions = {
   /**
    * @default 'zinc'
    */
-  color?: ShadcnThemeColor | ThemeCSSVarsVariant
+  color?: ColorOptions
   /**
    * @default 0.5
    */
