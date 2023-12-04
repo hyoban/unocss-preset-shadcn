@@ -36,12 +36,18 @@ export default defineConfig({
 })
 ```
 
-Do not run `shadcn-ui init` command.
+> [!IMPORTANT]
+> Do not run `shadcn-ui init` command.
 
 1. `pnpm add lucide-react class-variance-authority clsx tailwind-merge`
 1. copy `utils.ts` into your project at `src/lib`
 1. create `components.json` in your project root and modify as needed
 1. `pnpm dlx shadcn-ui@latest add button`
+
+> [!WARNING]
+> If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
+
+## Code to copy
 
 ```ts
 import { clsx } from "clsx"
