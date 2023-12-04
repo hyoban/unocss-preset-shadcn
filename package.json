@@ -50,7 +50,7 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
-    "unocss": "^0.56.0",
+    "unocss": ">= 0.56.0 < 1",
     "unocss-preset-animations": "^1.0.1"
   },
   "devDependencies": {
