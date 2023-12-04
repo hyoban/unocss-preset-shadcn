@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.1...v0.1.1
+
+[compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.1.1...v0.1.1)
+
 ## v0.0.3...main
 
 [compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.0.3...main)
