@@ -49,10 +49,8 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
-    "unocss": "^0.57.7"
-  },
-  "dependencies": {
-    "@unocss/preset-mini": "^0.57.7"
+    "unocss": "^0.56.0",
+    "unocss-preset-animations": "^1.0.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.1.2",
@@ -62,6 +60,7 @@
     "@types/node": "^20.10.1",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
+    "@unocss/preset-mini": "^0.56.0",
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
@@ -78,6 +77,6 @@
     "vitest": "^1.0.0-beta.6"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm run format:check && pnpm run lint && pnpm run typecheck"
+    "pre-commit": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test -- run && pnpm build"
   }
 }

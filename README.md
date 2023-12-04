@@ -18,17 +18,19 @@ Follow the [Install and configure Vite guide](https://ui.shadcn.com/docs/install
 Replace the second step with the following operation after setup [UnoCSS](https://unocss.dev/integrations/vite):
 
 ```bash
-ni -D unocss-preset-shadcn
+ni -D unocss-preset-animations unocss-preset-shadcn
 ```
 
 ```ts
 // unocss.config.ts
 import { defineConfig, presetUno } from "unocss"
+import presetAnimations from "unocss-preset-animations"
 import { presetShadcn } from "unocss-preset-shadcn"
 
 export default defineConfig({
   presets: [
     presetUno(),
+    presetAnimations(),
     presetShadcn({
       color: "red",
     }),
