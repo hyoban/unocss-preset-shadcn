@@ -17,11 +17,11 @@ export type ThemeOptions = {
   /**
    * @default 'zinc'
    */
-  color: ColorOptions
+  color?: ColorOptions
   /**
    * @default 0.5
    */
-  radius: number
+  radius?: number
 }
 
 export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>

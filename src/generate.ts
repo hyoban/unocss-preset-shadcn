@@ -54,7 +54,7 @@ export function generateCSSVars(
     return theme.map((t) => generateCSSVars(t, false)).join("\n")
   }
 
-  const { color, radius } = theme
+  const { color = "zinc", radius = 0.5 } = theme
   const { light, dark, name } = getColorTheme(color)
   const lightVars = generateColorCSSVars(light)
   const darkVars = generateColorCSSVars(dark)
