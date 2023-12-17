@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.0...main
+
+[compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.2.0...main)
+
+### 🩹 Fixes
+
+- Export colors and radius ([2c7bca6](https://github.com/hyoban/unocss-preset-shadcn/commit/2c7bca6))
+
+### ❤️ Contributors
+
+- Stephen Zhou ([@hyoban](http://github.com/hyoban))
+
 ## v0.1.1...main
 
 [compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.1.1...main)
