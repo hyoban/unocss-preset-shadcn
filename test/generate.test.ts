@@ -4,16 +4,25 @@ import { generateCSSVars } from "../src/generate"
 
 describe("generate-theme-css-var", () => {
   it("built in themes", () => {
-    expect(generateCSSVars("zinc", 0.5)).toMatchFileSnapshot("zinc-0.5.css")
-    expect(generateCSSVars("neutral", 0.75)).toMatchFileSnapshot(
-      "neutral-0.75.css",
-    )
+    expect(
+      generateCSSVars({
+        color: "zinc",
+        radius: 0.5,
+      }),
+    ).toMatchFileSnapshot("zinc-0.5.css")
+    expect(
+      generateCSSVars({
+        color: "neutral",
+        radius: 0.75,
+      }),
+    ).toMatchFileSnapshot("neutral-0.75.css")
   })
 
   it("custom theme", () => {
     expect(
-      generateCSSVars(
-        {
+      generateCSSVars({
+        color: {
+          name: "custom",
           light: {
             background: "0 1% 100%",
             foreground: "240 10% 3.9%",
@@ -57,15 +66,15 @@ describe("generate-theme-css-var", () => {
             ring: "240 4.9% 83.9%",
           },
         },
-        1,
-      ),
+        radius: 1,
+      }),
     ).toMatchFileSnapshot("custom.css")
   })
 
   it("custom theme based on built in theme", () => {
     expect(
-      generateCSSVars(
-        {
+      generateCSSVars({
+        color: {
           base: "zinc",
           color: {
             light: {
@@ -73,8 +82,23 @@ describe("generate-theme-css-var", () => {
             },
           },
         },
-        1,
-      ),
+        radius: 1,
+      }),
     ).toMatchFileSnapshot("custom.css")
+  })
+
+  it("generate multiple themes", () => {
+    expect(
+      generateCSSVars([
+        {
+          color: "zinc",
+          radius: 0.5,
+        },
+        {
+          color: "neutral",
+          radius: 0.75,
+        },
+      ]),
+    ).toMatchFileSnapshot("multiple.css")
   })
 })

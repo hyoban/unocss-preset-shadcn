@@ -4,8 +4,11 @@ import type { PresetShadcnOptions } from "./types"
 import type { Preset } from "unocss"
 import type { Theme } from "unocss/preset-mini"
 
-export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
-  const { color = "zinc", radius = 0.5 } = options
+export function presetShadcn(options?: PresetShadcnOptions): Preset<Theme> {
+  const theme = options ?? {
+    color: "zinc",
+    radius: 0.5,
+  }
 
   return {
     name: "unocss-preset-shadcn",
@@ -17,7 +20,7 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
           @keyframes shadcn-enter { from{ opacity: var(--un-enter-opacity, 1); transform: translate3d(var(--un-enter-translate-x, 0), var(--un-enter-translate-y, 0), 0) scale3d(var(--un-enter-scale, 1), var(--un-enter-scale, 1), var(--un-enter-scale, 1)) rotate(var(--un-enter-rotate, 0)) } }
           @keyframes shadcn-exit { to{ opacity: var(--un-exit-opacity, 1); transform: translate3d(var(--un-exit-translate-x, 0), var(--un-exit-translate-y, 0), 0) scale3d(var(--un-exit-scale, 1), var(--un-exit-scale, 1), var(--un-exit-scale, 1)) rotate(var(--un-exit-rotate, 0)) } }
 
-          ${generateCSSVars(color, radius)}
+          ${generateCSSVars(theme)}
 
           * {
             border-color: hsl(var(--border));

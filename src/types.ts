@@ -3,6 +3,8 @@ import type { DeepPartial } from "unocss"
 
 export type ShadcnThemeColor = ShadcnTheme["name"]
 
+type ArrayOrSingle<T> = T | T[]
+
 export type ColorOptions =
   | ShadcnThemeColor
   | ThemeCSSVarsVariant
@@ -11,13 +13,15 @@ export type ColorOptions =
       color: DeepPartial<ThemeCSSVarsVariant>
     }
 
-export type PresetShadcnOptions = {
+export type ThemeOptions = {
   /**
    * @default 'zinc'
    */
-  color?: ColorOptions
+  color: ColorOptions
   /**
    * @default 0.5
    */
-  radius?: number
+  radius: number
 }
+
+export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>

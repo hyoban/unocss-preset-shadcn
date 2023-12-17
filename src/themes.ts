@@ -27,6 +27,7 @@ export type ThemeCSSVars = {
 }
 
 export type ThemeCSSVarsVariant = {
+  name: string
   light: ThemeCSSVars
   dark: ThemeCSSVars
 }
