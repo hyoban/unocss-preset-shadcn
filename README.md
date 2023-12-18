@@ -83,7 +83,7 @@ export function cn(...inputs: ClassValue[]) {
 
 ## Dynamic Theme
 
-![Dynamic Theme Demo](https://s2.loli.net/2023/12/17/xYTqt3bVs6oe7jh.gif)
+Preview the [demo](https://unocss-preset-shadcn.vercel.app).
 
 If you want to use dynamic theme, you can pass a array of theme objects to `presetShadcn`:
 
@@ -101,116 +101,8 @@ export default defineConfig({
 })
 ```
 
-Add a script to your `index.html`:
-
-```html
-<!doctype html>
-<html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Change me</title>
-    <script>
-      !(function () {
-        var e =
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches,
-          t = localStorage.getItem("use-dark") || "system"
-        ;('"dark"' === t || (e && '"light"' !== t)) &&
-          document.documentElement.classList.toggle("dark", !0)
-      })()
-    </script>
-    <style>
-      html.dark {
-        color-scheme: dark;
-      }
-    </style>
-  </head>
-  <body class="h-full">
-    <div id="root" class="h-full"></div>
-    <script>
-      !(function () {
-        var currentColor = localStorage.getItem("currentColor") || "neutral"
-        var currentRadius = localStorage.getItem("currentRadius") || "0.5"
-        document.body.classList.add(`theme-${currentColor.slice(1, -1)}`)
-        document.body.style.setProperty("--radius", `${currentRadius}rem`)
-      })()
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-```
-
-To dynamically change the theme, you can create a theme switch component:
-
-```ts
-import { useLocalStorage } from "foxact/use-local-storage"
-
-import { Button } from "~/components/ui/button"
-
-const builtinColors = [
-  "zinc",
-  "slate",
-  "stone",
-  "gray",
-  "neutral",
-  "red",
-  "rose",
-  "orange",
-  "green",
-  "blue",
-  "yellow",
-  "violet",
-] as const
-const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
-
-export function ThemeSwitch() {
-  const [currentColor, setCurrentColor] = useLocalStorage<
-    (typeof builtinColors)[number]
-  >("currentColor", "neutral")
-
-  const [currentRadius, setCurrentRadius] = useLocalStorage<
-    (typeof builtinRadiuses)[number]
-  >("currentRadius", 0.5)
-
-  return (
-    <div className="space-y-4">
-      <p>Color</p>
-      <div className="grid grid-cols-6 gap-2">
-        {builtinColors.map((color) => (
-          <Button
-            key={color}
-            onClick={() => {
-              document.body.classList.remove(`theme-${currentColor}`)
-              document.body.classList.add(`theme-${color}`)
-              setCurrentColor(color)
-            }}
-            variant={color === currentColor ? "default" : "secondary"}
-          >
-            {color}
-          </Button>
-        ))}
-      </div>
-      <p>Radius</p>
-      <div className="flex gap-2">
-        {builtinRadiuses.map((radius) => (
-          <Button
-            key={radius}
-            onClick={() => {
-              document.body.style.setProperty("--radius", `${radius}rem`)
-              setCurrentRadius(radius)
-            }}
-            variant={radius === currentRadius ? "default" : "secondary"}
-          >
-            {radius}
-          </Button>
-        ))}
-      </div>
-    </div>
-  )
-}
-```
+Add a theme sync script to your [index.html](./playground/index.html).
+And to dynamically change the theme, you can create a [theme switch component](./playground/src/components/theme-switch.tsx).
 
 <!-- Badges -->
 
