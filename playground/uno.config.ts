@@ -6,7 +6,7 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetIcons({
-      scale: 1.2,
+      scale: 1.3,
     }),
     presetAnimations(),
     presetShadcn(builtinColors.map((c) => ({ color: c }))),

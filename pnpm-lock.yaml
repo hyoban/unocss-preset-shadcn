@@ -115,6 +115,9 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
     devDependencies:
+      '@iconify-json/lucide':
+        specifier: ^1.1.147
+        version: 1.1.147
       '@types/react':
         specifier: ^18.2.45
         version: 18.2.45
@@ -1200,6 +1203,12 @@ packages:
       semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@iconify-json/lucide@1.1.147:
+    resolution: {integrity: sha512-5BgeL5aWJKlRdda87Ah/o6nM5NQU1rr0So9S8p3zAAjdFxCyHmeO9Lg3Uh8TdDer1MeJ3xJeDoIg4T81m81DHw==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
