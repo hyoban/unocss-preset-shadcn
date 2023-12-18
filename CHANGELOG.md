@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.2.1...main
+
+[compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.2.1...main)
+
+### 🩹 Fixes
+
+- Accordion animate rule ([b01d039](https://github.com/hyoban/unocss-preset-shadcn/commit/b01d039))
+
+### 📖 Documentation
+
+- Add guide for Dynamic Theme ([6f2b350](https://github.com/hyoban/unocss-preset-shadcn/commit/6f2b350))
+- Update readme ([86f7a7f](https://github.com/hyoban/unocss-preset-shadcn/commit/86f7a7f))
+
+### 🏡 Chore
+
+- Update example ([6a548d0](https://github.com/hyoban/unocss-preset-shadcn/commit/6a548d0))
+- Add apperance-switch for example ([0a4cf93](https://github.com/hyoban/unocss-preset-shadcn/commit/0a4cf93))
+- Add a github link ([ddf7b90](https://github.com/hyoban/unocss-preset-shadcn/commit/ddf7b90))
+
+### ❤️ Contributors
+
+- Stephen Zhou ([@hyoban](http://github.com/hyoban))
+
 ## v0.2.0...main
 
 [compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.2.0...main)
