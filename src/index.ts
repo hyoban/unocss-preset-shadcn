@@ -34,13 +34,13 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
     ],
     rules: [
       [
-        "accordion-down",
+        "animate-accordion-down",
         {
           animation: "shadcn-down 0.2s ease-out",
         },
       ],
       [
-        "accordion-up",
+        "animate-accordion-up",
         {
           animation: "shadcn-up 0.2s ease-out",
         },
