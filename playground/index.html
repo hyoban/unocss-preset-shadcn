@@ -1,12 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Vite + React + TS + UnoCSS + shadcn</title>
+    <script>
+      !(function () {
+        var e =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches,
+          t = localStorage.getItem("use-dark") || "system"
+        ;('"dark"' === t || (e && '"light"' !== t)) &&
+          document.documentElement.classList.toggle("dark", !0)
+      })()
+    </script>
+    <style>
+      html.dark {
+        color-scheme: dark;
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="h-full">
+    <div id="root" class="h-full"></div>
+    <script>
+      !(function () {
+        var currentColor = localStorage.getItem("currentColor") || '"neutral"'
+        var currentRadius = localStorage.getItem("currentRadius") || "0.5"
+        document.body.classList.add(`theme-${currentColor.slice(1, -1)}`)
+        document.body.style.setProperty("--radius", `${currentRadius}rem`)
+      })()
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

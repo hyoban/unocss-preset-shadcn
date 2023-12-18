@@ -1,29 +1,31 @@
 {
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
-    "@unocss/reset": "^0.57.7",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.294.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.0.0",
-    "unocss-preset-shadcn": "workspace:^"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
-    "unocss": "^0.57.7",
-    "vite": "^5.0.0"
-  },
   "name": "playground",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build",
     "dev": "vite",
     "preview": "vite preview"
   },
-  "type": "module"
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
+    "@unocss/reset": "^0.58.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "foxact": "^0.2.27",
+    "lucide-react": "^0.298.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "unocss": "^0.58.0",
+    "unocss-preset-animations": "^1.0.1",
+    "unocss-preset-shadcn": "workspace:^",
+    "vite": "^5.0.10"
+  }
 }

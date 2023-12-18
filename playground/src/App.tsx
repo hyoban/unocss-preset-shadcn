@@ -1,5 +1,9 @@
-import { Button } from "@/components/ui/button"
+import { ThemeSwitch } from "@/components/theme-switch"
 
 export default function ButtonDemo() {
-  return <Button>Button</Button>
+  return (
+    <div className="h-full flex flex-col justify-center items-center">
+      <ThemeSwitch />
+    </div>
+  )
 }
