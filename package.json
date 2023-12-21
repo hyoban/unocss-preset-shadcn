@@ -1,7 +1,7 @@
 {
   "name": "unocss-preset-shadcn",
   "type": "module",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "packageManager": "pnpm@8.12.1",
   "description": "use shadcn ui with unocss",
   "author": "Stephen Zhou <hi@hyoban.cc>",

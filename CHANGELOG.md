@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.2...main
+
+[compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.2.2...main)
+
+### 🚀 Enhancements
+
+- Support for shadcn-vue ([25c8df7](https://github.com/hyoban/unocss-preset-shadcn/commit/25c8df7))
+
+### 🏡 Chore
+
+- Init shadcn-vue ([a57b3b7](https://github.com/hyoban/unocss-preset-shadcn/commit/a57b3b7))
+- Add button demo ([613f900](https://github.com/hyoban/unocss-preset-shadcn/commit/613f900))
+
+### ❤️ Contributors
+
+- Stephen Zhou ([@hyoban](http://github.com/hyoban))
+
 ## v0.2.1...main
 
 [compare changes](https://github.com/hyoban/unocss-preset-shadcn/compare/v0.2.1...main)
