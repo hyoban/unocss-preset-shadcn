@@ -16,8 +16,8 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
         getCSS: () => `
           @keyframes shadcn-down { from{ height: 0 } to { height: var(--radix-accordion-content-height)} }
           @keyframes shadcn-up { from{ height: var(--radix-accordion-content-height)} to { height: 0 } }
-          @keyframes shadcn-enter { from{ opacity: var(--un-enter-opacity, 1); transform: translate3d(var(--un-enter-translate-x, 0), var(--un-enter-translate-y, 0), 0) scale3d(var(--un-enter-scale, 1), var(--un-enter-scale, 1), var(--un-enter-scale, 1)) rotate(var(--un-enter-rotate, 0)) } }
-          @keyframes shadcn-exit { to{ opacity: var(--un-exit-opacity, 1); transform: translate3d(var(--un-exit-translate-x, 0), var(--un-exit-translate-y, 0), 0) scale3d(var(--un-exit-scale, 1), var(--un-exit-scale, 1), var(--un-exit-scale, 1)) rotate(var(--un-exit-rotate, 0)) } }
+          @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--radix-collapsible-content-height)} }
+          @keyframes shadcn-collapsible-up { from{ height: var(--radix-collapsible-content-height)} to { height: 0 } }
 
           ${generateCSSVars(options)}
 
@@ -43,6 +43,18 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
         "animate-accordion-up",
         {
           animation: "shadcn-up 0.2s ease-out",
+        },
+      ],
+      [
+        "animate-collapsible-down",
+        {
+          animation: "shadcn-collapsible-down 0.2s ease-out",
+        },
+      ],
+      [
+        "animate-collapsible-up",
+        {
+          animation: "shadcn-collapsible-up 0.2s ease-out",
         },
       ],
     ],

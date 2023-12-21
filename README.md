@@ -35,16 +35,28 @@ export default defineConfig({
       color: "red",
     }),
   ],
+  // By default, `.ts` and `.js` files are NOT extracted.
+  // If you want to extract them, you can use the following configuration.
+  // It's necessary to add following configuration if you are using shadcn-vue.
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]s|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+      ],
+    },
+  },
 })
 ```
 
 > [!IMPORTANT]
 > Do not run `shadcn-ui init` command.
 
-1. `pnpm add lucide-react class-variance-authority clsx tailwind-merge`
+1. `ni lucide-react class-variance-authority clsx tailwind-merge`
+   - Run `ni lucide-vue-next radix-vue class-variance-authority clsx tailwind-merge` if you are using shadcn-vue.
 1. copy `utils.ts` into your project at `src/lib`
 1. create `components.json` in your project root and modify as needed
 1. `pnpm dlx shadcn-ui@latest add button`
+   - Run `npx shadcn-vue@latest add button` if you are using shadcn-vue.
 
 > [!WARNING]
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
@@ -62,6 +74,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
+React + shadcn-ui
+
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -74,6 +88,26 @@ export function cn(...inputs: ClassValue[]) {
     "baseColor": "neutral",
     "cssVariables": true
   },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+Vue + shadcn-vue
+
+```json
+{
+  "style": "default",
+  "typescript": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/assets/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "framework": "vite",
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils"
