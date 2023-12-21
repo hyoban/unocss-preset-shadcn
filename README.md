@@ -6,14 +6,14 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Use [shadcn/ui](https://ui.shadcn.com/) with [UnoCSS](https://unocss.dev/)
+Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) with [UnoCSS](https://unocss.dev)
 
 1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
 1. Theme can be easily customized
 
 ## Usage
 
-Follow the [Install and configure Vite guide](https://ui.shadcn.com/docs/installation/vite) to setup shadcn/ui.
+Follow the [Install and configure Vite guide](https://ui.shadcn.com/docs/installation/vite) to setup shadcn/ui, or [Install and configure Vite](https://www.shadcn-vue.com/docs/installation/vite.html) to setup shadcn-vue.
 
 Replace the second step with the following operation after setup [UnoCSS](https://unocss.dev/integrations/vite):
 
@@ -49,13 +49,13 @@ export default defineConfig({
 ```
 
 > [!IMPORTANT]
-> Do not run `shadcn-ui init` command.
+> Do not run `npx shadcn-ui@latest init` or `npx shadcn-vue@latest init`
 
 1. `ni lucide-react class-variance-authority clsx tailwind-merge`
    - Run `ni lucide-vue-next radix-vue class-variance-authority clsx tailwind-merge` if you are using shadcn-vue.
 1. copy `utils.ts` into your project at `src/lib`
 1. create `components.json` in your project root and modify as needed
-1. `pnpm dlx shadcn-ui@latest add button`
+1. `npx shadcn-ui@latest add button`
    - Run `npx shadcn-vue@latest add button` if you are using shadcn-vue.
 
 > [!WARNING]
