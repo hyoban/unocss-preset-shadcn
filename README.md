@@ -6,16 +6,21 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) with [UnoCSS](https://unocss.dev)
+Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) or [shadcn-svelte](https://www.shadcn-svelte.com) with [UnoCSS](https://unocss.dev)
 
 1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
 1. Theme can be easily customized
 
 ## Usage
 
-Follow the [Install and configure Vite guide](https://ui.shadcn.com/docs/installation/vite) to setup shadcn/ui, or [Install and configure Vite](https://www.shadcn-vue.com/docs/installation/vite.html) to setup shadcn-vue.
+Follow official guide to setup shadcn/ui, shadcn-vue or shadcn-svelte.
 
-Replace the second step with the following operation after setup [UnoCSS](https://unocss.dev/integrations/vite):
+1. [shadcn/ui](https://ui.shadcn.com/docs/installation/vite)
+1. [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html)
+1. [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation)
+
+Replace the step to setup Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
+Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
 ```bash
 ni -D unocss-preset-animations unocss-preset-shadcn
@@ -37,7 +42,7 @@ export default defineConfig({
   ],
   // By default, `.ts` and `.js` files are NOT extracted.
   // If you want to extract them, you can use the following configuration.
-  // It's necessary to add following configuration if you are using shadcn-vue.
+  // It's necessary to add following configuration if you are using shadcn-vue or shadcn-svelte.
   content: {
     pipeline: {
       include: [
@@ -49,14 +54,16 @@ export default defineConfig({
 ```
 
 > [!IMPORTANT]
-> Do not run `npx shadcn-ui@latest init` or `npx shadcn-vue@latest init`
+> Do not run `npx shadcn-ui@latest init` or `npx shadcn-vue@latest init` or `npx shadcn-svelte@latest init` to initialize your project.
 
 1. `ni lucide-react class-variance-authority clsx tailwind-merge`
-   - Run `ni lucide-vue-next radix-vue class-variance-authority clsx tailwind-merge` if you are using shadcn-vue.
+   - `ni lucide-vue-next radix-vue class-variance-authority clsx tailwind-merge` for shadcn-vue.
+   - `ni lucide-svelte tailwind-variants clsx tailwind-merge` for shadcn-svelte.
 1. copy `utils.ts` into your project at `src/lib`
 1. create `components.json` in your project root and modify as needed
 1. `npx shadcn-ui@latest add button`
-   - Run `npx shadcn-vue@latest add button` if you are using shadcn-vue.
+   - `npx shadcn-vue@latest add button` for shadcn-vue.
+   - `npx shadcn-svelte@latest add button` for shadcn-svelte.
 
 > [!WARNING]
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
@@ -111,6 +118,24 @@ Vue + shadcn-vue
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils"
+  }
+}
+```
+
+Svelte + shadcn-svelte
+
+```json
+{
+  "$schema": "https://shadcn-svelte.com/schema.json",
+  "style": "default",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/app.pcss",
+    "baseColor": "neutral"
+  },
+  "aliases": {
+    "components": "$lib/components",
+    "utils": "$lib/utils"
   }
 }
 ```
