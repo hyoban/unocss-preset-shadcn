@@ -93,7 +93,8 @@ React + shadcn-ui
     "config": "tailwind.config.js",
     "css": "app/globals.css",
     "baseColor": "neutral",
-    "cssVariables": true
+    "cssVariables": true,
+    "prefix": ""
   },
   "aliases": {
     "components": "@/components",
