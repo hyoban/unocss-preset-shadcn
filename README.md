@@ -87,18 +87,19 @@ React + shadcn-ui
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "default",
-  "rsc": false,
-  "tsx": true,
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "app/globals.css",
+    "css": "styles/global.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
+  "rsc": false,
+  "tsx": true,
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "~/lib/utils",
+    "components": "~/components",
+    "ui": "~/components/ui"
   }
 }
 ```
