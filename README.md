@@ -165,6 +165,11 @@ export default defineConfig({
 Add a theme sync script to your [index.html](./playground/index.html).
 And to dynamically change the theme, you can create a [theme switch component](./playground/src/components/theme-switch.tsx).
 
+## See also
+
+- [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
+- [tobiasfoerg/tailwindcss-shadcn-ui](https://github.com/tobiasfoerg/tailwindcss-shadcn-ui)
+
 <!-- Badges -->
 
 [npm-version-src]: https://img.shields.io/npm/v/unocss-preset-shadcn?style=flat&colorA=080f12&colorB=1fa669
