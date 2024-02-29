@@ -10,26 +10,26 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
-    "@unocss/extractor-svelte": "^0.58.0",
-    "svelte": "^4.2.7",
-    "svelte-check": "^3.6.0",
-    "tslib": "^2.4.1",
-    "typescript": "^5.0.0",
-    "unocss": "^0.58.0",
+    "@sveltejs/adapter-auto": "^3.1.1",
+    "@sveltejs/kit": "^2.5.2",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
+    "@unocss/extractor-svelte": "^0.58.5",
+    "svelte": "^4.2.12",
+    "svelte-check": "^3.6.6",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "unocss": "^0.58.5",
     "unocss-preset-animations": "^1.0.1",
     "unocss-preset-shadcn": "workspace:^",
-    "vite": "^5.0.3"
+    "vite": "^5.1.4"
   },
   "type": "module",
   "dependencies": {
-    "@unocss/reset": "^0.58.0",
-    "bits-ui": "^0.11.8",
-    "clsx": "^2.0.0",
-    "lucide-svelte": "^0.299.0",
-    "tailwind-merge": "^2.1.0",
-    "tailwind-variants": "^0.1.19"
+    "@unocss/reset": "^0.58.5",
+    "bits-ui": "^0.18.4",
+    "clsx": "^2.1.0",
+    "lucide-svelte": "^0.343.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwind-variants": "^0.1.20"
   }
 }
