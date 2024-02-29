@@ -13,13 +13,8 @@ Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) o
 
 ## Usage
 
-Follow official guide to setup shadcn/ui, shadcn-vue or shadcn-svelte.
+Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 
-1. [shadcn/ui](https://ui.shadcn.com/docs/installation/vite)
-1. [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html)
-1. [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation)
-
-Replace the step to setup Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
 ```bash
@@ -41,8 +36,8 @@ export default defineConfig({
     }),
   ],
   // By default, `.ts` and `.js` files are NOT extracted.
-  // If you want to extract them, you can use the following configuration.
-  // It's necessary to add following configuration if you are using shadcn-vue or shadcn-svelte.
+  // If you want to extract them, use the following configuration.
+  // It's necessary to add the following configuration if you use shadcn-vue or shadcn-svelte.
   content: {
     pipeline: {
       include: [
@@ -146,7 +141,7 @@ Svelte + shadcn-svelte
 
 Preview the [demo](https://unocss-preset-shadcn.vercel.app).
 
-If you want to use dynamic theme, you can pass a array of theme objects to `presetShadcn`:
+If you want to use a dynamic theme, you can pass an array of theme objects to `presetShadcn`:
 
 ```ts
 import { defineConfig, presetUno, UserConfig } from "unocss"
@@ -163,7 +158,7 @@ export default defineConfig({
 ```
 
 Add a theme sync script to your [index.html](./playground/index.html).
-And to dynamically change the theme, you can create a [theme switch component](./playground/src/components/theme-switch.tsx).
+To dynamically change the theme, you can create a [theme switch component](./playground/src/components/theme-switch.tsx).
 
 ## See also
 
