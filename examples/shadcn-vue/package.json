@@ -18,7 +18,7 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.6.2",
+    "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.3.3",
     "unocss": "^0.58.5",
     "unocss-preset-animations": "^1.0.1",
