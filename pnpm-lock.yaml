@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      unocss:
-        specifier: '>= 0.56.0 < 1'
-        version: 0.57.7(postcss@8.4.35)(rollup@3.28.1)(vite@5.1.4)
       unocss-preset-animations:
         specifier: ^1.0.1
         version: 1.0.1(@unocss/preset-wind@0.58.5)(unocss@0.57.7)
@@ -78,6 +75,9 @@ importers:
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.3.3)
+      unocss:
+        specifier: ^0.58.5
+        version: 0.58.5(postcss@8.4.35)(rollup@3.28.1)(vite@5.1.4)
       vite:
         specifier: ^5.1.4
         version: 5.1.4(@types/node@20.11.23)
