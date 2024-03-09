@@ -87,6 +87,9 @@ importers:
       foxact:
         specifier: ^0.2.33
         version: 0.2.33(react@18.2.0)
+      jotai-dark:
+        specifier: ^0.3.0
+        version: 0.3.0(foxact@0.2.33)(react@18.2.0)
       lucide-react:
         specifier: ^0.352.0
         version: 0.352.0(react@18.2.0)
@@ -5809,6 +5812,27 @@ packages:
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
+
+  /jotai-dark@0.3.0(foxact@0.2.33)(react@18.2.0):
+    resolution: {integrity: sha512-Vuhymer1VLaAjSW+hLowZBZa0FSKMamo3xajXubCr0Jdnp5P80vrh/5s29EQ2cp3eSa9weuUy+kdoMKEDdp/sA==}
+    peerDependencies:
+      foxact: ^0.2.33
+      jotai: '>=2.5.0'
+      jotai-effect: '*'
+      react: ^18.2.0
+    peerDependenciesMeta:
+      foxact:
+        optional: true
+      jotai:
+        optional: true
+      jotai-effect:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      foxact: 0.2.33(react@18.2.0)
+      react: 18.2.0
+    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}

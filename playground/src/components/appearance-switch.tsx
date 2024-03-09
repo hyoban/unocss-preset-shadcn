@@ -1,6 +1,6 @@
 'use client'
 
-import { useDark } from '@/hooks/use-dark'
+import { useDark } from 'jotai-dark/react'
 
 export function AppearanceSwitch({ className = '' }: { className?: string }) {
   const { toggleDark } = useDark({
