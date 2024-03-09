@@ -1,7 +1,8 @@
-import type { Theme as ShadcnTheme, ThemeCSSVarsVariant } from "./themes"
-import type { DeepPartial } from "unocss"
+import type { DeepPartial } from 'unocss'
 
-export type ShadcnThemeColor = ShadcnTheme["name"]
+import type { Theme as ShadcnTheme, ThemeCSSVarsVariant } from './themes'
+
+export type ShadcnThemeColor = ShadcnTheme['name']
 
 type ArrayOrSingle<T> = T | T[]
 
@@ -9,9 +10,9 @@ export type ColorOptions =
   | ShadcnThemeColor
   | ThemeCSSVarsVariant
   | {
-      base: ShadcnThemeColor
-      color: DeepPartial<ThemeCSSVarsVariant>
-    }
+    base: ShadcnThemeColor
+    color: DeepPartial<ThemeCSSVarsVariant>
+  }
 
 export type ThemeOptions = {
   /**

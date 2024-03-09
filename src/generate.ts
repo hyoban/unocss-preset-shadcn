@@ -1,18 +1,18 @@
-import { mergeDeep } from "unocss"
+import { mergeDeep } from 'unocss'
 
-import { themeCSSVarKeys, themes } from "./themes"
-
-import type { ThemeCSSVarKey, ThemeCSSVars } from "./themes"
-import type { ColorOptions, PresetShadcnOptions } from "./types"
+import type { ThemeCSSVarKey, ThemeCSSVars } from './themes'
+import { themeCSSVarKeys, themes } from './themes'
+import type { ColorOptions, PresetShadcnOptions } from './types'
 
 function generateColorCSSVars(color: ThemeCSSVars) {
   return Object.entries(color)
     .map(([key, value]) => {
-      if (!themeCSSVarKeys.includes(key as ThemeCSSVarKey)) return ""
+      if (!themeCSSVarKeys.includes(key as ThemeCSSVarKey))
+        return ''
       return `  --${key}: ${value};`
     })
     .filter(Boolean)
-    .join("\n")
+    .join('\n')
 }
 
 function generateRadiusCSSVars(radius: number) {
@@ -20,8 +20,9 @@ function generateRadiusCSSVars(radius: number) {
 }
 
 function getBuiltInTheme(name: string) {
-  const theme = themes.find((t) => t.name === name)
-  if (!theme) throw new Error(`Unknown color: ${name}`)
+  const theme = themes.find(t => t.name === name)
+  if (!theme)
+    throw new Error(`Unknown color: ${name}`)
   return {
     name,
     ...theme.cssVars,
@@ -33,13 +34,16 @@ function getColorTheme(color: ColorOptions) {
   let dark: ThemeCSSVars
   let name: string
 
-  if (typeof color === "string") {
+  if (typeof color === 'string') {
     name = color
     ;({ light, dark } = getBuiltInTheme(color))
-  } else if ("base" in color) {
+  }
+  else if ('base' in color) {
     name = color.base
     ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color.color))
-  } else {
+  }
+  else {
+    // eslint-disable-next-line prefer-destructuring
     name = color.name
     ;({ light, dark } = color)
   }
@@ -50,11 +54,10 @@ export function generateCSSVars(
   theme: PresetShadcnOptions,
   onlyOne = true,
 ): string {
-  if (Array.isArray(theme)) {
-    return theme.map((t) => generateCSSVars(t, false)).join("\n")
-  }
+  if (Array.isArray(theme))
+    return theme.map(t => generateCSSVars(t, false)).join('\n')
 
-  const { color = "zinc", radius = 0.5 } = theme
+  const { color = 'zinc', radius = 0.5 } = theme
   const { light, dark, name } = getColorTheme(color)
   const lightVars = generateColorCSSVars(light)
   const darkVars = generateColorCSSVars(dark)

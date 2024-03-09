@@ -10,10 +10,10 @@
         var e =
             window.matchMedia &&
             window.matchMedia("(prefers-color-scheme: dark)").matches,
-          t = localStorage.getItem("use-dark") || "system"
-        ;('"dark"' === t || (e && '"light"' !== t)) &&
-          document.documentElement.classList.toggle("dark", !0)
-      })()
+          t = localStorage.getItem("use-dark") || "system";
+        ('"dark"' === t || (e && '"light"' !== t)) &&
+          document.documentElement.classList.toggle("dark", !0);
+      })();
     </script>
     <style>
       html.dark {
@@ -25,11 +25,11 @@
     <div id="root" class="h-full"></div>
     <script>
       !(function () {
-        var currentColor = localStorage.getItem("currentColor") || '"neutral"'
-        var currentRadius = localStorage.getItem("currentRadius") || "0.5"
-        document.body.classList.add(`theme-${currentColor.slice(1, -1)}`)
-        document.body.style.setProperty("--radius", `${currentRadius}rem`)
-      })()
+        var currentColor = localStorage.getItem("currentColor") || '"neutral"';
+        var currentRadius = localStorage.getItem("currentRadius") || "0.5";
+        document.body.classList.add(`theme-${currentColor.slice(1, -1)}`);
+        document.body.style.setProperty("--radius", `${currentRadius}rem`);
+      })();
     </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>

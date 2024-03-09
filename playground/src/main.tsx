@@ -1,12 +1,12 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
+import '@unocss/reset/tailwind.css'
+import 'virtual:uno.css'
 
-import App from "./App.tsx"
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
-import "@unocss/reset/tailwind.css"
-import "virtual:uno.css"
+import App from './my-app.tsx'
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

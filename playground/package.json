@@ -1,7 +1,7 @@
 {
   "name": "playground",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "vite build",
     "dev": "vite",
@@ -13,21 +13,21 @@
     "@unocss/reset": "^0.58.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "foxact": "^0.2.31",
-    "lucide-react": "^0.343.0",
+    "foxact": "^0.2.33",
+    "lucide-react": "^0.352.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.1.170",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
+    "@iconify-json/lucide": "^1.1.172",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.2.1",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.2",
     "unocss": "^0.58.5",
     "unocss-preset-animations": "^1.0.1",
     "unocss-preset-shadcn": "workspace:^",
-    "vite": "^5.1.4"
+    "vite": "^5.1.5"
   }
 }

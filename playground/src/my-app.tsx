@@ -1,5 +1,5 @@
-import { AppearanceSwitch } from "@/components/appearance-switch"
-import { ThemeSwitch } from "@/components/theme-switch"
+import { AppearanceSwitch } from '@/components/appearance-switch'
+import { ThemeSwitch } from '@/components/theme-switch'
 
 export default function ButtonDemo() {
   return (

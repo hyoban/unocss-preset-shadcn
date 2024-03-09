@@ -23,9 +23,9 @@ ni -D unocss-preset-animations unocss-preset-shadcn
 
 ```ts
 // unocss.config.ts
-import { defineConfig, presetUno } from "unocss"
-import presetAnimations from "unocss-preset-animations"
-import { presetShadcn } from "unocss-preset-shadcn"
+import { defineConfig, presetUno } from "unocss";
+import presetAnimations from "unocss-preset-animations";
+import { presetShadcn } from "unocss-preset-shadcn";
 
 export default defineConfig({
   presets: [
@@ -48,7 +48,7 @@ export default defineConfig({
       ],
     },
   },
-})
+});
 ```
 
 > [!IMPORTANT]
@@ -69,13 +69,13 @@ export default defineConfig({
 ## Code to copy
 
 ```ts
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-import type { ClassValue } from "clsx"
+import type { ClassValue } from "clsx";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
@@ -147,9 +147,9 @@ Preview the [demo](https://unocss-preset-shadcn.vercel.app).
 If you want to use a dynamic theme, you can pass an array of theme objects to `presetShadcn`:
 
 ```ts
-import { defineConfig, presetUno, UserConfig } from "unocss"
-import presetAnimations from "unocss-preset-animations"
-import { builtinColors, presetShadcn } from "unocss-preset-shadcn"
+import { defineConfig, presetUno, UserConfig } from "unocss";
+import presetAnimations from "unocss-preset-animations";
+import { builtinColors, presetShadcn } from "unocss-preset-shadcn";
 
 export default defineConfig({
   presets: [
@@ -157,7 +157,7 @@ export default defineConfig({
     presetAnimations(),
     presetShadcn(builtinColors.map((c) => ({ color: c }))),
   ],
-})
+});
 ```
 
 Add a theme sync script to your [index.html](./playground/index.html).

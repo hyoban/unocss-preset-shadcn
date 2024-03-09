@@ -1,7 +1,7 @@
-import { useLocalStorage } from "foxact/use-local-storage"
-import { useEffect, useMemo, useSyncExternalStore } from "react"
+import { useLocalStorage } from 'foxact/use-local-storage'
+import { useEffect, useMemo, useSyncExternalStore } from 'react'
 
-const query = "(prefers-color-scheme: dark)"
+const query = '(prefers-color-scheme: dark)'
 
 function getSnapshot() {
   return window.matchMedia(query).matches
@@ -13,9 +13,9 @@ function getServerSnapshot(): undefined {
 
 function subscribe(callback: () => void) {
   const matcher = window.matchMedia(query)
-  matcher.addEventListener("change", callback)
+  matcher.addEventListener('change', callback)
   return () => {
-    matcher.removeEventListener("change", callback)
+    matcher.removeEventListener('change', callback)
   }
 }
 
@@ -23,15 +23,15 @@ function useSystemDark() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
-const themeOptions = ["system", "light", "dark"] as const
+const themeOptions = ['system', 'light', 'dark'] as const
 export type Theme = (typeof themeOptions)[number]
 
 function isDarkMode(setting?: Theme | null, isSystemDark?: boolean) {
-  return setting === "dark" || (isSystemDark && setting !== "light")
+  return setting === 'dark' || (isSystemDark && setting !== 'light')
 }
 
-export function useDark(themeKey = "use-dark") {
-  const [theme, setTheme] = useLocalStorage<Theme>(themeKey, "system")
+export function useDark(themeKey = 'use-dark') {
+  const [theme, setTheme] = useLocalStorage<Theme>(themeKey, 'system')
   const isSystemDark = useSystemDark()
 
   const isDark = useMemo(
@@ -40,27 +40,24 @@ export function useDark(themeKey = "use-dark") {
   )
 
   const toggleDark = () => {
-    if (theme === "system") {
-      setTheme(isSystemDark ? "light" : "dark")
-    } else {
-      setTheme("system")
-    }
+    if (theme === 'system')
+      setTheme(isSystemDark ? 'light' : 'dark')
+    else
+      setTheme('system')
   }
 
   useEffect(() => {
     const isDark = isDarkMode(theme, isSystemDark)
-    if (isDark) {
-      document.documentElement.classList.toggle("dark", true)
-    } else {
-      document.documentElement.classList.toggle("dark", false)
-    }
+    if (isDark)
+      document.documentElement.classList.toggle('dark', true)
+    else
+      document.documentElement.classList.toggle('dark', false)
 
     if (
-      (theme === "dark" && isSystemDark) ||
-      (theme === "light" && !isSystemDark)
-    ) {
-      setTheme("system")
-    }
+      (theme === 'dark' && isSystemDark)
+      || (theme === 'light' && !isSystemDark)
+    )
+      setTheme('system')
   }, [theme, isSystemDark, setTheme])
 
   return { isDark, toggleDark }

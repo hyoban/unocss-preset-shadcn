@@ -1,6 +1,36 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
-  "eslint.experimental.useFlatConfig": true
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "mdx",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "github-actions-workflow",
+    "css"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.codeActionsOnSave.rules": [
+    "!unused-imports/no-unused-imports",
+    "*"
+  ],
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
+    { "rule": "import/first", "severity": "off" },
+    { "rule": "import/newline-after-import", "severity": "off" },
+    { "rule": "import/no-duplicates", "severity": "off" },
+    { "rule": "antfu/import-dedupe", "severity": "off" },
+    { "rule": "format/prettier", "severity": "off" }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
