@@ -23,15 +23,77 @@ function useSystemDark() {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
-const themeOptions = ['system', 'light', 'dark'] as const
-export type Theme = (typeof themeOptions)[number]
+/**
+ * credit: https://github.com/pacocoursey/next-themes/blob/cd67bfa20ef6ea78a814d65625c530baae4075ef/packages/next-themes/src/index.tsx#L285
+ */
+function disableAnimation(disableTransitionExclude: string[] = []) {
+  const css = document.createElement('style')
+  css.append(
+    document.createTextNode(
+      `
+*${disableTransitionExclude.map(s => `:not(${s})`).join('')} {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
+      `,
+    ),
+  )
+  document.head.append(css)
 
-function isDarkMode(setting?: Theme | null, isSystemDark?: boolean) {
-  return setting === 'dark' || (isSystemDark && setting !== 'light')
+  return () => {
+    // Force restyle
+    ;(() => window.getComputedStyle(document.body))()
+
+    // Wait for next tick before removing
+    setTimeout(() => {
+      css.remove()
+    }, 1)
+  }
 }
 
-export function useDark(themeKey = 'use-dark') {
-  const [theme, setTheme] = useLocalStorage<Theme>(themeKey, 'system')
+export type Options = {
+  /**
+   * @default "use-dark"
+   */
+  storageKey?: string
+
+  /**
+   * @default false
+   */
+  disableTransition?: boolean
+
+  /**
+   * @default []
+   */
+  disableTransitionExclude?: string[]
+
+  /**
+   * @default isDark => document.documentElement.classList.toggle("dark", isDark)
+   */
+  applyDarkMode?: (isDark: boolean) => void
+}
+
+const themeOptions = ['system', 'light', 'dark'] as const
+type Theme = (typeof themeOptions)[number]
+
+function isDarkMode(setting?: Theme | null, isSystemDark?: boolean | null) {
+  return setting === 'dark' || (!!isSystemDark && setting !== 'light')
+}
+
+export function useDark(options?: Options) {
+  const {
+    storageKey = 'use-dark',
+    disableTransition = false,
+    disableTransitionExclude = [],
+    applyDarkMode = (isDark: boolean) => {
+      document.documentElement.classList.toggle('dark', isDark)
+    },
+  } = options ?? {}
+
+  const [theme, setTheme] = useLocalStorage<Theme>(storageKey, 'system')
   const isSystemDark = useSystemDark()
 
   const isDark = useMemo(
@@ -40,18 +102,21 @@ export function useDark(themeKey = 'use-dark') {
   )
 
   const toggleDark = () => {
+    const enable = disableTransition
+      ? disableAnimation(disableTransitionExclude)
+      : null
+
     if (theme === 'system')
       setTheme(isSystemDark ? 'light' : 'dark')
     else
       setTheme('system')
+
+    enable?.()
   }
 
   useEffect(() => {
     const isDark = isDarkMode(theme, isSystemDark)
-    if (isDark)
-      document.documentElement.classList.toggle('dark', true)
-    else
-      document.documentElement.classList.toggle('dark', false)
+    applyDarkMode(isDark)
 
     if (
       (theme === 'dark' && isSystemDark)
