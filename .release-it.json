@@ -1,0 +1,15 @@
+{
+  "plugins": {
+    "release-it-pnpm": {}
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "hooks": {
+    "before:init": [
+      "pnpm run lint",
+      "pnpm run typecheck",
+      "pnpm run test --run"
+    ]
+  }
+}
