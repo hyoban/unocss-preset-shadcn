@@ -11,6 +11,12 @@ Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) o
 1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
 1. Theme can be easily customized
 
+## Starter
+
+You can easily start a new project without manually setting up the project.
+
+- [shadcn-vue-unocss-starter](https://github.com/hyoban/shadcn-vue-unocss-starter)
+
 ## Usage
 
 Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
