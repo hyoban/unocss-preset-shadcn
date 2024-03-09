@@ -16,6 +16,7 @@ Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) o
 You can easily start a new project without manually setting up the project.
 
 - [shadcn-vue-unocss-starter](https://github.com/hyoban/shadcn-vue-unocss-starter)
+- [shadcn-svelte-unocss-starter](https://github.com/hyoban/shadcn-svelte-unocss-starter)
 
 ## Usage
 
