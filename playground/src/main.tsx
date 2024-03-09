@@ -4,7 +4,7 @@ import 'virtual:uno.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import App from './my-app.tsx'
+import App from './app'
 
 ReactDOM.createRoot(document.querySelector('#root')!).render(
   <React.StrictMode>

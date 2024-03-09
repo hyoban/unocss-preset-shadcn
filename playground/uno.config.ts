@@ -1,4 +1,4 @@
-import { defineConfig, presetIcons, presetUno, UserConfig } from "unocss"
+import { defineConfig, presetIcons, presetUno } from "unocss"
 import presetAnimations from "unocss-preset-animations"
 import { builtinColors, presetShadcn } from "unocss-preset-shadcn"
 
