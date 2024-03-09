@@ -13,9 +13,9 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "main": "./dist/index.mjs",
@@ -53,7 +53,7 @@
     "@types/node": "^20.11.25",
     "@unocss/preset-mini": "^0.58.5",
     "eslint": "^8.57.0",
-    "eslint-config-hyoban": "^0.1.28",
+    "eslint-config-hyoban": "^0.1.29",
     "esno": "^4.7.0",
     "lint-staged": "^15.2.2",
     "pnpm": "^8.15.4",

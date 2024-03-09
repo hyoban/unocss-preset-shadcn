@@ -28,8 +28,8 @@ importers:
         specifier: ^8.57.0
         version: 8.57.0
       eslint-config-hyoban:
-        specifier: ^0.1.28
-        version: 0.1.28(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2)
+        specifier: ^0.1.29
+        version: 0.1.29(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2)
       esno:
         specifier: ^4.7.0
         version: 4.7.0
@@ -4134,8 +4134,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: true
 
-  /eslint-config-hyoban@0.1.28(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2):
-    resolution: {integrity: sha512-2SCdzm1SPMpiBFQZxIMn/wSpIrSe7auB9en8bUoqu7jpvfUA8pTGnlB1mKVVgd/WcySprtYI7zMDy8z9Mg2pvA==}
+  /eslint-config-hyoban@0.1.29(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2):
+    resolution: {integrity: sha512-kko8Nsv8qFidbq//2NlGSe0zXxQJPoNbOFTJBf4PgXxtKMAPMbvViX05pX5Cnfyy2PFktdLjxRJzi+Fep4Ab+A==}
     hasBin: true
     peerDependencies:
       '@eslint-react/eslint-plugin': '>=1.5.3'
@@ -5910,7 +5910,7 @@ packages:
     resolution: {integrity: sha512-WYDyuc/uFcGp6YtM2H0uKmUwieOuzeE/5YocFJLnLfclZ4inf3mRn8ZVy1s7Hxji7Jxm6Ss8gqpexD/GlKoGgg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.11.2
+      acorn: 8.11.3
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
       semver: 7.6.0
