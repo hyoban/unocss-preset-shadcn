@@ -12,7 +12,7 @@ export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
  * @param globals Generates global variables, like *.border-color, body.color, body.background.
  * @default true
  */
-export function presetShadcn(options: PresetShadcnOptions = {}, globals?: boolean): Preset<Theme> {
+export function presetShadcn(options: PresetShadcnOptions = {}, globals = true): Preset<Theme> {
   return {
     name: 'unocss-preset-shadcn',
     preflights: [
