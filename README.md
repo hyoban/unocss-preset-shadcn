@@ -76,10 +76,9 @@ export default defineConfig({
 ## Code to copy
 
 ```ts
+import type { ClassValue } from "clsx";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
-import type { ClassValue } from "clsx";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -102,9 +101,9 @@ React + shadcn-ui
   "rsc": false,
   "tsx": true,
   "aliases": {
-    "utils": "~/lib/utils",
-    "components": "~/components",
-    "ui": "~/components/ui"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui"
   }
 }
 ```

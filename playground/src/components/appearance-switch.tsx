@@ -1,5 +1,3 @@
-'use client'
-
 import { useDark } from 'jotai-dark/react'
 
 export function AppearanceSwitch({ className = '' }: { className?: string }) {
