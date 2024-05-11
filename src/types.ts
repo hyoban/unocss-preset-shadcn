@@ -9,10 +9,7 @@ type ArrayOrSingle<T> = T | T[]
 export type ColorOptions =
   | ShadcnThemeColor
   | ThemeCSSVarsVariant
-  | {
-    base: ShadcnThemeColor,
-    color: DeepPartial<ThemeCSSVarsVariant>,
-  }
+  | ({ base: ShadcnThemeColor } & DeepPartial<ThemeCSSVarsVariant>)
 
 export interface ThemeOptions {
   /**

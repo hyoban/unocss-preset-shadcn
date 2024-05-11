@@ -1,6 +1,6 @@
 import { mergeDeep } from 'unocss'
 
-import type { ThemeCSSVarKey, ThemeCSSVars } from './themes'
+import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant } from './themes'
 import { themeCSSVarKeys, themes } from './themes'
 import type { ColorOptions, PresetShadcnOptions } from './types'
 
@@ -51,7 +51,7 @@ body {
 `
 }
 
-function getBuiltInTheme(name: string) {
+function getBuiltInTheme(name: string): ThemeCSSVarsVariant {
   const theme = themes.find(t => t.name === name)
   if (!theme)
     throw new Error(`Unknown color: ${name}`)
@@ -72,7 +72,7 @@ function getColorTheme(color: ColorOptions) {
   }
   else if ('base' in color) {
     name = color.base
-    ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color.color))
+    ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color))
   }
   else {
     // eslint-disable-next-line prefer-destructuring

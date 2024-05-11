@@ -131,10 +131,8 @@ describe('generate-theme-css-var', () => {
       generateCSSVars({
         color: {
           base: 'zinc',
-          color: {
-            light: {
-              background: '0 1% 100%',
-            },
+          light: {
+            background: '0 1% 100%',
           },
         },
         radius: 1,
