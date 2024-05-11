@@ -10,19 +10,19 @@ export type ColorOptions =
   | ShadcnThemeColor
   | ThemeCSSVarsVariant
   | {
-    base: ShadcnThemeColor
-    color: DeepPartial<ThemeCSSVarsVariant>
+    base: ShadcnThemeColor,
+    color: DeepPartial<ThemeCSSVarsVariant>,
   }
 
-export type ThemeOptions = {
+export interface ThemeOptions {
   /**
    * @default 'zinc'
    */
-  color?: ColorOptions | false
+  color?: ColorOptions | false,
   /**
    * @default 0.5
    */
-  radius?: number | false
+  radius?: number | false,
 }
 
 export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>

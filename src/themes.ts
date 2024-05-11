@@ -26,10 +26,10 @@ export type ThemeCSSVars = {
   [K in ThemeCSSVarKey]: ThemeColorString
 }
 
-export type ThemeCSSVarsVariant = {
-  name: string
-  light: ThemeCSSVars
-  dark: ThemeCSSVars
+export interface ThemeCSSVarsVariant {
+  name: string,
+  light: ThemeCSSVars,
+  dark: ThemeCSSVars,
 }
 
 export const themes = [

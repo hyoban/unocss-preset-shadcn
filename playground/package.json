@@ -1,6 +1,7 @@
 {
   "name": "playground",
   "type": "module",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -10,25 +11,25 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
-    "@unocss/reset": "^0.58.5",
+    "@unocss/reset": "^0.60.0",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "foxact": "^0.2.33",
     "jotai-dark": "^0.3.0",
-    "lucide-react": "^0.352.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.1"
+    "lucide-react": "^0.378.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.1.172",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
+    "@iconify-json/lucide": "^1.1.187",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "typescript": "^5.4.2",
-    "unocss": "^0.58.5",
-    "unocss-preset-animations": "^1.0.1",
+    "typescript": "^5.4.5",
+    "unocss": "^0.60.0",
+    "unocss-preset-animations": "^1.0.2",
     "unocss-preset-shadcn": "workspace:^",
-    "vite": "^5.1.5"
+    "vite": "^5.2.11"
   }
 }
