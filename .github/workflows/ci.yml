@@ -10,78 +10,56 @@ on:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Set node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
-
-      - name: Lint
-        run: nr lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Set node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
-
-      - name: Typecheck
-        run: nr typecheck
-
   test:
-    runs-on: ${{ matrix.os }}
-
+    name: Test
     strategy:
       matrix:
-        node: [lts/*]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [lts/*, lts/-1]
+        os: [ubuntu-latest, windows-latest]
       fail-fast: false
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
 
       - name: Set node ${{ matrix.node }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Setup
-        run: npm i -g @antfu/ni
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: |
+            - args: [--frozen-lockfile]
 
-      - name: Install
-        run: nci
+      - name: Install Global Packages
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: pnpm install -g publint @arethetypeswrong/cli
+
+      - name: Lint
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: pnpm run lint
+
+      - name: Type check
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: pnpm run typecheck
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Test
-        run: nr test
+        run: pnpm run test
+
+      - name: Pub Lint
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: publint
+
+      - name: Are The Types Wrong
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: attw --pack .
+
+      - name: Dedupe
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: pnpm dedupe --check

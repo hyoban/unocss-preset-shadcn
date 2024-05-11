@@ -20,20 +20,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-
       - name: Set node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install
-        run: pnpm install --frozen-lockfile
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: |
+            - args: [--frozen-lockfile]
+            - args: [--global, release-it, release-it-pnpm]
 
       - name: Release
-        run: if npx should-semantic-release ; then npx release-it --verbose ; fi
+        run: release-it --verbose
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
