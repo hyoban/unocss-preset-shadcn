@@ -1,14 +1,18 @@
 import type { Preset } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 
-import { generateCSSVars } from './generate'
+import { generateCSSVars, generateGlobalStyles } from './generate'
 import { themes } from './themes'
 import type { PresetShadcnOptions } from './types'
 
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
-export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
+/**
+ * @param globals Generates global variables, like *.border-color, body.color, body.background.
+ * @default true
+ */
+export function presetShadcn(options: PresetShadcnOptions = {}, globals?: boolean): Preset<Theme> {
   return {
     name: 'unocss-preset-shadcn',
     preflights: [
@@ -21,14 +25,7 @@ export function presetShadcn(options: PresetShadcnOptions = {}): Preset<Theme> {
 
           ${generateCSSVars(options)}
 
-          * {
-            border-color: hsl(var(--border));
-          }
-
-          body {
-            color: hsl(var(--foreground));
-            background: hsl(var(--background));
-          }
+          ${globals ? generateGlobalStyles() : ''}
         `,
       },
     ],
