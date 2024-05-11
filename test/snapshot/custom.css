@@ -1,5 +1,6 @@
+
 :root {
-  --background: 0 0% 100%;
+  --background: 0 1% 100%;
   --foreground: 240 10% 3.9%;
   --card: 0 0% 100%;
   --card-foreground: 240 10% 3.9%;
@@ -18,7 +19,7 @@
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
   --ring: 240 5.9% 10%;
-  --radius: 0.5rem;
+  --radius: 1rem;
 }
 .dark {
   --background: 240 10% 3.9%;

@@ -9,51 +9,51 @@ const unoGenerator = createGenerator()
 describe('presetShadcn()-execute-getCSS', () => {
   it('default options', async () => {
     const presetReturn = presetShadcn()
-    await expect(presetReturn).toMatchFileSnapshot('presetShadcn()-default.json')
+    await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-default.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
-    ).toMatchFileSnapshot('presetShadcn()-default-getCSS.css')
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-default-getCSS.css')
   })
 
   it('disable color', async () => {
     const presetReturn = presetShadcn({ color: false })
     // Don't think this is needed for now
-    // await expect(presetReturn).toMatchFileSnapshot('presetShadcn()-disable_color.json')
+    // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_color.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
-    ).toMatchFileSnapshot('presetShadcn()-disable_color-getCSS.css')
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-disable_color-getCSS.css')
   })
 
   it('disable radius', async () => {
     const presetReturn = presetShadcn({ radius: false })
     // Don't think this is needed for now
-    // await expect(presetReturn).toMatchFileSnapshot('presetShadcn()-disable_radius.json')
+    // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_radius.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
-    ).toMatchFileSnapshot('presetShadcn()-disable_radius-getCSS.css')
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-disable_radius-getCSS.css')
   })
 
   it('disable color and radius', async () => {
     const presetReturn = presetShadcn({ color: false, radius: false })
     // Don't think this is needed for now
-    // await expect(presetReturn).toMatchFileSnapshot('presetShadcn()-disable_color_and_radius.json')
+    // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_color_and_radius.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
-    ).toMatchFileSnapshot('presetShadcn()-disable_color_and_radius-getCSS.css')
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-disable_color_and_radius-getCSS.css')
   })
 
   it('disable global styles', async () => {
     const presetReturn = presetShadcn(undefined, false)
     // Don't think this is needed for now
-    // await expect(presetReturn).toMatchFileSnapshot('presetShadcn()-disable_global_styles.json')
+    // await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-disable_global_styles.json')
 
     await expect(
       presetReturn.preflights![0]?.getCSS({ generator: unoGenerator, theme: {} }),
-    ).toMatchFileSnapshot('presetShadcn()-disable_global_styles-getCSS.css')
+    ).toMatchFileSnapshot('snapshot/presetShadcn()-disable_global_styles-getCSS.css')
   })
 })
 
@@ -64,13 +64,13 @@ describe('generate-theme-css-var', () => {
         color: 'zinc',
         radius: 0.5,
       }),
-    ).toMatchFileSnapshot('zinc-0.5.css')
+    ).toMatchFileSnapshot('snapshot/zinc-0.5.css')
     await expect(
       generateCSSVars({
         color: 'neutral',
         radius: 0.75,
       }),
-    ).toMatchFileSnapshot('neutral-0.75.css')
+    ).toMatchFileSnapshot('snapshot/neutral-0.75.css')
   })
 
   it('custom theme', async () => {
@@ -123,7 +123,7 @@ describe('generate-theme-css-var', () => {
         },
         radius: 1,
       }),
-    ).toMatchFileSnapshot('custom.css')
+    ).toMatchFileSnapshot('snapshot/custom.css')
   })
 
   it('custom theme based on built in theme', async () => {
@@ -139,7 +139,7 @@ describe('generate-theme-css-var', () => {
         },
         radius: 1,
       }),
-    ).toMatchFileSnapshot('custom.css')
+    ).toMatchFileSnapshot('snapshot/custom.css')
   })
 
   it('generate multiple themes', async () => {
@@ -154,6 +154,6 @@ describe('generate-theme-css-var', () => {
           radius: 0.75,
         },
       ]),
-    ).toMatchFileSnapshot('multiple.css')
+    ).toMatchFileSnapshot('snapshot/multiple.css')
   })
 })
