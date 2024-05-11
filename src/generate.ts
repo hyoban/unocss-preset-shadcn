@@ -15,8 +15,40 @@ function generateColorCSSVars(color: ThemeCSSVars) {
     .join('\n')
 }
 
+function colorCSSVarsStyles(lightVars: string, darkVars: string, { radius, themeName }: { radius?: number | false, themeName?: string | false }) {
+  return `
+${themeName ? `.theme-${themeName}` : ':root'} {
+${lightVars}
+${radius ? generateRadiusCSSVars(radius) : ''}
+}
+${themeName ? `.dark .theme-${themeName}` : '.dark'} {
+${darkVars}
+}`
+}
+
 function generateRadiusCSSVars(radius: number) {
   return `  --radius: ${radius}rem;`
+}
+
+function radiusCSSVarsStyles(radius: number) {
+  return `
+:root {
+${generateRadiusCSSVars(radius)}
+}
+`
+}
+
+export function generateGlobalStyles() {
+  return `
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+`
 }
 
 function getBuiltInTheme(name: string) {
@@ -58,27 +90,20 @@ export function generateCSSVars(
     return theme.map(t => generateCSSVars(t, false)).join('\n')
 
   const { color = 'zinc', radius = 0.5 } = theme
-  const { light, dark, name } = getColorTheme(color)
-  const lightVars = generateColorCSSVars(light)
-  const darkVars = generateColorCSSVars(dark)
 
-  if (!onlyOne) {
-    return `.theme-${name} {
-${lightVars}
-${generateRadiusCSSVars(radius)}
-}
+  let cssStyle = ''
 
-.dark .theme-${name} {
-${darkVars}
-}`
+  if (!color) {
+    if (radius)
+      cssStyle += radiusCSSVarsStyles(radius)
+  }
+  else {
+    const { light, dark, name } = getColorTheme(color)
+    const lightVars = generateColorCSSVars(light)
+    const darkVars = generateColorCSSVars(dark)
+
+    cssStyle += colorCSSVarsStyles(lightVars, darkVars, { radius, themeName: !onlyOne && name })
   }
 
-  return `:root {
-${lightVars}
-${generateRadiusCSSVars(radius)}
-}
-
-.dark {
-${darkVars}
-}`
+  return cssStyle
 }
