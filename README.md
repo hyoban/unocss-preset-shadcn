@@ -75,6 +75,8 @@ export default defineConfig({
 
 ## Code to copy
 
+`utils.ts`: this file usually under `src/lib` folder.
+
 ```ts
 import type { ClassValue } from "clsx";
 import { clsx } from "clsx";
@@ -84,6 +86,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
+
+`components.json`: this file should under your project root.
 
 React + shadcn-ui
 
