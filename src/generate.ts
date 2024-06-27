@@ -27,7 +27,7 @@ ${darkVars}
 }
 
 function generateRadiusCSSVars(radius: number) {
-  return `  --radius: ${radius}rem;`
+  return `  --radius: ${radius};`
 }
 
 function radiusCSSVarsStyles(radius: number) {
@@ -102,7 +102,8 @@ export function generateCSSVars(
     const lightVars = generateColorCSSVars(light)
     const darkVars = generateColorCSSVars(dark)
 
-    cssStyle += colorCSSVarsStyles(lightVars, darkVars, { radius, themeName: !onlyOne && name })
+    const themeRadius = light.radius ? light.radius : 0;
+    cssStyle += colorCSSVarsStyles(lightVars, darkVars, { radius: themeRadius, themeName: !onlyOne && name })
   }
 
   return cssStyle
