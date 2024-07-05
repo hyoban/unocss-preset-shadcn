@@ -1,7 +1,7 @@
 // @ts-check
-import hyoban from 'eslint-config-hyoban'
+import { defineConfig } from 'eslint-config-hyoban'
 
-export default hyoban(
+export default defineConfig(
   {
     ignores: [
       'test/snapshot/**/*',

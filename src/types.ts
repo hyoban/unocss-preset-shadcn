@@ -15,15 +15,15 @@ export interface ThemeOptions {
   /**
    * @default 'zinc'
    */
-  color?: ColorOptions | false,
+  color?: ColorOptions | false
   /**
    * @default 0.5
    */
-  radius?: number | false,
+  radius?: number | false
   /**
    * @default '.dark'
    */
-  darkSelector?: string,
+  darkSelector?: string
 }
 
 export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>

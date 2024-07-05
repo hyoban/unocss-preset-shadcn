@@ -75,7 +75,6 @@ function getColorTheme(color: ColorOptions) {
     ;({ light, dark } = mergeDeep(getBuiltInTheme(color.base), color))
   }
   else {
-    // eslint-disable-next-line prefer-destructuring
     name = color.name
     ;({ light, dark } = color)
   }

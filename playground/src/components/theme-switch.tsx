@@ -20,12 +20,12 @@ const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
 export function ThemeSwitch() {
   const [currentColor, setCurrentColor] = useLocalStorage<
-  (typeof builtinColors)[number]
-    >('currentColor', 'neutral')
+    (typeof builtinColors)[number]
+  >('currentColor', 'neutral')
 
   const [currentRadius, setCurrentRadius] = useLocalStorage<
-  (typeof builtinRadiuses)[number]
-    >('currentRadius', 0.5)
+    (typeof builtinRadiuses)[number]
+  >('currentRadius', 0.5)
 
   return (
     <div className="space-y-4">
