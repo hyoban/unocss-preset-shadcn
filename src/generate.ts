@@ -15,13 +15,13 @@ function generateColorCSSVars(color: ThemeCSSVars) {
     .join('\n')
 }
 
-function colorCSSVarsStyles(lightVars: string, darkVars: string, { radius, themeName }: { radius?: number | false, themeName?: string | false }) {
+function colorCSSVarsStyles(lightVars: string, darkVars: string, { radius, themeName, darkSelector }: { radius?: number | false, themeName?: string | false, darkSelector: string }) {
   return `
 ${themeName ? `.theme-${themeName}` : ':root'} {
 ${lightVars}
 ${radius ? generateRadiusCSSVars(radius) : ''}
 }
-${themeName ? `.dark .theme-${themeName}` : '.dark'} {
+${themeName ? `${darkSelector} .theme-${themeName}` : darkSelector} {
 ${darkVars}
 }`
 }
@@ -89,7 +89,7 @@ export function generateCSSVars(
   if (Array.isArray(theme))
     return theme.map(t => generateCSSVars(t, false)).join('\n')
 
-  const { color = 'zinc', radius = 0.5 } = theme
+  const { color = 'zinc', radius = 0.5, darkSelector = '.dark' } = theme
 
   let cssStyle = ''
 
@@ -102,7 +102,7 @@ export function generateCSSVars(
     const lightVars = generateColorCSSVars(light)
     const darkVars = generateColorCSSVars(dark)
 
-    cssStyle += colorCSSVarsStyles(lightVars, darkVars, { radius, themeName: !onlyOne && name })
+    cssStyle += colorCSSVarsStyles(lightVars, darkVars, { radius, themeName: !onlyOne && name, darkSelector })
   }
 
   return cssStyle

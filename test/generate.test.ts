@@ -154,4 +154,12 @@ describe('generate-theme-css-var', () => {
       ]),
     ).toMatchFileSnapshot('snapshot/multiple.css')
   })
+
+  it('custom dark selector', async () => {
+    await expect(
+      generateCSSVars({
+        darkSelector: '.custom-dark',
+      }),
+    ).toMatchFileSnapshot('snapshot/dark-selector.css')
+  })
 })

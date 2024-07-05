@@ -20,6 +20,10 @@ export interface ThemeOptions {
    * @default 0.5
    */
   radius?: number | false,
+  /**
+   * @default '.dark'
+   */
+  darkSelector?: string,
 }
 
 export type PresetShadcnOptions = ArrayOrSingle<ThemeOptions>
