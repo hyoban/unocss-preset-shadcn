@@ -6,7 +6,7 @@
 [![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
 
-Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) or [shadcn-svelte](https://www.shadcn-svelte.com) with [UnoCSS](https://unocss.dev)
+Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) or [shadcn-svelte](https://www.shadcn-svelte.com) or [SolidUI](https://www.solid-ui.com) with [UnoCSS](https://unocss.dev).
 
 1. Based on [fisand/unocss-preset-shadcn](https://github.com/fisand/unocss-preset-shadcn)
 1. Theme can be easily customized
@@ -20,7 +20,7 @@ You can easily start a new project without manually setting up the project.
 
 ## Usage
 
-Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
+Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation), or [SolidUI](https://www.solid-ui.com/docs/installation/manual). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 
 Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
@@ -30,16 +30,18 @@ ni -D unocss-preset-animations unocss-preset-shadcn
 
 ```ts
 // unocss.config.ts
-import { defineConfig, presetUno } from "unocss";
-import presetAnimations from "unocss-preset-animations";
-import { presetShadcn } from "unocss-preset-shadcn";
+import { defineConfig, presetUno } from 'unocss'
+import presetAnimations from 'unocss-preset-animations'
+import { presetShadcn } from 'unocss-preset-shadcn'
 
 export default defineConfig({
   presets: [
     presetUno(),
     presetAnimations(),
     presetShadcn({
-      color: "red",
+      color: 'red',
+      // With default setting for SolidUI, you need to set the darkSelector option.
+      darkSelector: '[data-kb-theme="dark"]',
     }),
   ],
   // By default, `.ts` and `.js` files are NOT extracted.
@@ -51,24 +53,26 @@ export default defineConfig({
         // the default
         /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
         // include js/ts files
-        "src/**/*.{js,ts}",
+        'src/**/*.{js,ts}',
       ],
     },
   },
-});
+})
 ```
 
 > [!IMPORTANT]
-> Do not run `npx shadcn-ui@latest init` or `npx shadcn-vue@latest init` or `npx shadcn-svelte@latest init` to initialize your project.
+> Do not run `npx shadcn-ui@latest init` or `npx shadcn-vue@latest init` or `npx shadcn-svelte@latest init` or `npx solidui-cli@latest init` to initialize your project.
 
 1. `ni lucide-react class-variance-authority clsx tailwind-merge`
    - `ni lucide-vue-next radix-vue class-variance-authority clsx tailwind-merge` for shadcn-vue.
    - `ni lucide-svelte tailwind-variants clsx tailwind-merge` for shadcn-svelte.
+   - `ni tailwindcss-animate class-variance-authority clsx tailwind-merge` for SolidUI.
 1. copy `utils.ts` into your project at `src/lib`
-1. create `components.json` in your project root and modify as needed
+1. create `components.json` or `ui.config.json` (for SolidUI) in your project root and modify as needed
 1. `npx shadcn-ui@latest add button`
    - `npx shadcn-vue@latest add button` for shadcn-vue.
    - `npx shadcn-svelte@latest add button` for shadcn-svelte.
+   - `npx solidui-cli@latest add button` for SolidUI.
 
 > [!WARNING]
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
@@ -78,12 +82,12 @@ export default defineConfig({
 `utils.ts`: this file usually under `src/lib` folder.
 
 ```ts
-import type { ClassValue } from "clsx";
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import type { ClassValue } from 'clsx'
+import { clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs))
 }
 ```
 
@@ -150,6 +154,22 @@ Svelte + shadcn-svelte
 }
 ```
 
+`ui.config.json`: this file should under your project root. This file is for SolidUI.
+
+```json
+{
+  "tsx": true,
+  "componentDir": "./src/components/ui",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/App.css"
+  },
+  "aliases": {
+    "path": "~/*"
+  }
+}
+```
+
 ## Dynamic Theme
 
 Preview the [demo](https://unocss-preset-shadcn.vercel.app).
@@ -157,9 +177,9 @@ Preview the [demo](https://unocss-preset-shadcn.vercel.app).
 If you want to use a dynamic theme, you can pass an array of theme objects to `presetShadcn`:
 
 ```ts
-import { defineConfig, presetUno, UserConfig } from "unocss";
-import presetAnimations from "unocss-preset-animations";
-import { builtinColors, presetShadcn } from "unocss-preset-shadcn";
+import { defineConfig, presetUno, UserConfig } from 'unocss'
+import presetAnimations from 'unocss-preset-animations'
+import { builtinColors, presetShadcn } from 'unocss-preset-shadcn'
 
 export default defineConfig({
   presets: [
@@ -167,7 +187,7 @@ export default defineConfig({
     presetAnimations(),
     presetShadcn(builtinColors.map((c) => ({ color: c }))),
   ],
-});
+})
 ```
 
 Add a theme sync script to your [index.html](./playground/index.html).
