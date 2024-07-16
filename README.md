@@ -77,6 +77,105 @@ export default defineConfig({
 > [!WARNING]
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
 
+---
+
+## Custom CSS variables
+
+To use custom CSS variables, you can set the `color` option to `false` and define your own CSS variables. Here is an example:
+
+### Step 1: Update `unocss.config.ts`
+
+```ts
+// unocss.config.ts
+import { defineConfig, presetUno } from 'unocss'
+import presetAnimations from 'unocss-preset-animations'
+import { presetShadcn } from 'unocss-preset-shadcn'
+
+export default defineConfig({
+  presets: [
+    presetUno(),
+    presetAnimations(),
+    presetShadcn({
+      color: false, // Disable default color theming
+      darkSelector: '.dark', // Optional: Set the dark mode selector
+    }),
+  ],
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        'src/**/*.{js,ts}',
+      ],
+    },
+  },
+})
+```
+
+### Step 2: Define Custom CSS Variables
+
+Create a CSS file (e.g., `styles.css`) and define your custom CSS variables:
+
+```css
+@unocss all;
+
+@layer base {
+  :root {
+    --background: 211 70% 100%;
+    --foreground: 211 77% 4%;
+    --muted: 211 32% 85%;
+    --muted-foreground: 211 11% 36%;
+    --popover: 211 70% 100%;
+    --popover-foreground: 211 77% 4%;
+    --card: 0 0% 99%;
+    --card-foreground: 211 77% 3%;
+    --border: 211 11% 95%;
+    --input: 211 11% 95%;
+    --primary: 211 94% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 211 10% 92%;
+    --secondary-foreground: 211 10% 32%;
+    --accent: 211 10% 92%;
+    --accent-foreground: 211 10% 32%;
+    --destructive: 2 82.15% 52.59%;
+    --destructive-foreground: 2 8.49% 97.48%;
+    --ring: 211 94% 45%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 211 42% 0%;
+    --foreground: 211 37% 98%;
+    --muted: 211 32% 15%;
+    --muted-foreground: 211 11% 64%;
+    --popover: 211 42% 0%;
+    --popover-foreground: 211 37% 98%;
+    --card: 0 0% 1%;
+    --card-foreground: 211 37% 99%;
+    --border: 211 11% 13%;
+    --input: 211 11% 13%;
+    --primary: 211 94% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 211 9% 16%;
+    --secondary-foreground: 211 9% 76%;
+    --accent: 211 9% 16%;
+    --accent-foreground: 211 9% 76%;
+    --destructive: 2 92% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 211 94% 45%;
+  }
+}
+```
+
+### Step 3: Import the CSS File
+
+Import this CSS file in your main application file:
+
+```js
+import './styles.css';
+```
+
+By setting `color` to `false`, you can fully customize your theme using CSS variables.
+
 ## Code to copy
 
 `utils.ts`: this file usually under `src/lib` folder.
