@@ -60,7 +60,7 @@
     "@types/node": "^20.14.9",
     "@unocss/preset-mini": "^0.60.4",
     "eslint": "^9.6.0",
-    "eslint-config-hyoban": "https://pkg.pr.new/hyoban/eslint-config-hyoban@main",
+    "eslint-config-hyoban": "3.0.0-beta.30",
     "lint-staged": "^15.2.7",
     "pnpm": "^9.4.0",
     "simple-git-hooks": "^2.11.1",
