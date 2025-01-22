@@ -22,9 +22,7 @@ export const themeCSSVarKeys = [
 ] as const
 export type ThemeCSSVarKey = (typeof themeCSSVarKeys)[number]
 
-export type ThemeCSSVars = {
-  [K in ThemeCSSVarKey]: ThemeColorString
-}
+export type ThemeCSSVars = Record<ThemeCSSVarKey, ThemeColorString>
 
 export interface ThemeCSSVarsVariant {
   name: string

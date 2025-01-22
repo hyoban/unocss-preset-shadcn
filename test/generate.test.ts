@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import presetShadcn from '../src'
 import { generateCSSVars } from '../src/generate'
 
-const unoGenerator = createGenerator()
+const unoGenerator = await createGenerator()
 
 describe('presetShadcn()-execute-getCSS', () => {
   it('default options', async () => {

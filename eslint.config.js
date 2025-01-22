@@ -6,5 +6,6 @@ export default defineConfig(
     ignores: [
       'test/snapshot/**/*',
     ],
+    unocss: false,
   },
 )
