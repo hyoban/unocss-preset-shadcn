@@ -11,7 +11,7 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@unocss/reset": "^0.61.5",
+    "@unocss/reset": "^65.4.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "foxact": "^0.2.36",
@@ -27,8 +27,8 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "typescript": "^5.5.3",
-    "unocss": "^0.61.5",
-    "unocss-preset-animations": "^1.1.0",
+    "unocss": "^65.4.2",
+    "unocss-preset-animations": "^1.1.1",
     "unocss-preset-shadcn": "workspace:^",
     "vite": "^5.3.4"
   }
