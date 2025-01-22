@@ -22,6 +22,8 @@ You can easily start a new project without manually setting up the project.
 
 Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation), or [SolidUI](https://www.solid-ui.com/docs/installation/manual). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 
+Install the [Tailwind Browser Style Reset](https://unocss.dev/guide/style-reset#tailwind).
+
 Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
 ```bash
