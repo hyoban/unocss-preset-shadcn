@@ -79,6 +79,40 @@ export default defineConfig({
 > [!WARNING]
 > If you encounter problems adjusting animation property, this may be because [tailwind-animate](https://github.com/jamiebuilds/tailwindcss-animate) has [duplicate rules about animation and transition](https://github.com/jamiebuilds/tailwindcss-animate/pull/46). You can refer to [Migration Guide from Animations Preset for UnoCSS](https://unocss-preset-animations.aelita.me/guide/migration.html) to solve this problem.
 
+---
+
+## Custom CSS variables
+
+To use custom CSS variables, you can set the `color` option to `false` and define your own CSS variables. Here is an example:
+
+### Step 1: Update `unocss.config.ts`
+
+```ts
+// unocss.config.ts
+import { defineConfig, presetUno } from 'unocss'
+import presetAnimations from 'unocss-preset-animations'
+import { presetShadcn } from 'unocss-preset-shadcn'
+
+export default defineConfig({
+  presets: [
+    presetUno(),
+    presetAnimations(),
+    presetShadcn({
+      color: false, // Disable default color theming
+      darkSelector: '.dark', // Optional: Set the dark mode selector
+    }),
+  ],
+  content: {
+    pipeline: {
+      include: [
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        'src/**/*.{js,ts}',
+      ],
+    },
+  },
+})
+```
+
 ## Code to copy
 
 `utils.ts`: this file usually under `src/lib` folder.
